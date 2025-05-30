@@ -1,0 +1,110 @@
+{
+  "initialRoutines": [
+    {
+      "id": 39,
+      "processName": "Comunicação NFs Liberadas",
+      "processHour": "08:35:00",
+      "status": 1,
+      "processType": 1,
+      "userAutomacao": "Automação 05",
+      "groupName": "Comunicação Nfs Liberadas",
+      "historyDate": "2025-05-30T18:47:20.000Z",
+      "historyStatus": "end",
+      "historyMessage": "Processo finalizado",
+      "historyUser": null
+    },
+    {
+      "id": 97,
+      "processName": "Atualizar Validades ",
+      "processHour": "22:00:00",
+      "status": 1,
+      "processType": 1,
+      "userAutomacao": "Automação 04",
+      "groupName": null,
+      "historyDate": "2025-05-30T13:56:50.000Z",
+      "historyStatus": "info",
+      "historyMessage": "Atualização de vencimentos realizada com sucesso APARELHO BARB GILL VENUS SIMPLY 3 12X2UN - 757.8",
+      "historyUser": null
+    }
+  ],
+  "exportedBases": [
+    {
+      "id": 24,
+      "processName": "Faturamentos",
+      "processHour": "21:50:00",
+      "status": 1,
+      "processType": 2,
+      "userAutomacao": "Automação 03",
+      "groupName": "Dashboards",
+      "historyDate": "2025-05-30T12:36:21.000Z",
+      "historyStatus": "end",
+      "historyMessage": "Processo finalizado",
+      "historyUser": null
+    }
+  ],
+  "dailyRoutines": [
+    {
+      "id": 101,
+      "processName": "Comunicação Notas Coletadas",
+      "processHour": "07:00:00",
+      "status": 1,
+      "processType": 3,
+      "userAutomacao": "Automação 04",
+      "groupName": null,
+      "historyDate": "2025-05-30T18:47:36.000Z",
+      "historyStatus": "end",
+      "historyMessage": "Processo finalizado",
+      "historyUser": null
+    }
+  ],
+  "weekRoutines": [
+    {
+      "id": 85,
+      "processName": "SMJ x STT BALANCEAMENTO",
+      "processHour": "00:00:00",
+      "status": 1,
+      "processType": 4,
+      "userAutomacao": "Automação 03",
+      "groupName": null,
+      "historyDate": "2025-05-30T03:30:04.000Z",
+      "historyStatus": "end",
+      "historyMessage": "Processo finalizado",
+      "historyUser": null
+    }
+  ],
+  "processes": [
+    {
+      "id": 101,
+      "processName": "Comunicação Notas Coletadas",
+      "processHour": "07:00:00",
+      "status": 1,
+      "processType": 3,
+      "userAutomacao": "Automação 04",
+      "groupName": null,
+      "historyDate": "2025-05-30T18:47:36.000Z",
+      "historyStatus": "end",
+      "historyMessage": "Processo finalizado",
+      "historyUser": null
+    }
+  ],
+  "allStatusesCounts": {
+    "1": 61,
+    "3": 3
+  },
+  "nfLiberadas": [
+    {
+      "key": "Comercial Tresmann Ltda (Supermercado Tresmann / Santa Maria de Jetibá).",
+      "value": "30"
+    },
+    {
+      "key": "Comercial Tresmann Ltda (Supermercado Tresmann / Santa Teresa)",
+      "value": "17"
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "groupName": "Comunicação Nfs Liberadas"
+    }
+  ]
+}

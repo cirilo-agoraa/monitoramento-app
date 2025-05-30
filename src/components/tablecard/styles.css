@@ -1,0 +1,18 @@
+/* Adicione ou ajuste no seu App.css ou TableCard.css */
+.green-panel, .yellow-panel, .red-panel {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  margin-right: 5px;
+  border-radius: 5px; /* quadrado com cantos levemente arredondados, use 0 para quadrado puro */
+}
+
+.green-panel {
+  background-color: green;
+}
+.yellow-panel {
+  background-color: yellow;
+}
+.red-panel {
+  background-color: red;
+}
