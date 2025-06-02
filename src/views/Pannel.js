@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "../components/sidebar";
 import Spinner from "../components/spinner";
 import "../App.css";
@@ -9,13 +9,12 @@ function Pannel() {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:9998/api")
+    fetch("http://localhost:9998/api/pannel")
       .then((res) => res.json())
       .then((json) => setData(json))
       .catch(() => setData({ error: "Erro ao buscar dados" }))
       .finally(() => setLoading(false));
 
-    // Atualiza a cada 2 minutos
     const interval = setInterval(() => window.location.reload(), 120000);
     return () => clearInterval(interval);
   }, []);
@@ -23,8 +22,6 @@ function Pannel() {
   if (loading || !data) return <Spinner />;
 
   const allStatusesCounts = data.allStatusesCounts || {};
-
-  // Status dos serviços simulados (ajuste conforme sua API)
   const {
     isPort4000inUse,
     isPort3000inUse,
@@ -46,7 +43,7 @@ function Pannel() {
       <Sidebar activePage="Geral" />
       <div className="main-panel">
         <div className="process-panel">
-          {/* Status Panel */}
+          {/* Status Panel em cima */}
           <div className="status-panel">
             <div>
               <div className="w-100 d-flex-center" style={{ fontSize: "1rem", fontWeight: 600 }}>
@@ -79,7 +76,7 @@ function Pannel() {
               </div>
             </div>
           </div>
-          {/* Cards centralizados */}
+          {/* Cards centralizados abaixo */}
           <div className="panel-columns">
             {/* Coluna 1: Portais */}
             <div className="panel-col">

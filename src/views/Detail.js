@@ -44,7 +44,7 @@ const Detail = () => {
       <div className="container w-80">
         <div className="header py-4" style={{ display: "flex", alignItems: "center" }}>
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/tarefas')}
             style={{
               background: "none",
               border: "none",

@@ -32,7 +32,7 @@ const TableCard = ({ title, processes = [] }) => (
           <div
             className="card clickable"
             key={process.id}
-            // onClick={() => window.location.href = `/process/${process.id}`}
+            onClick={() => window.location.href = `/process/${process.id}`}
             style={{ cursor: "pointer" }}
           >
             <div className="card-status">

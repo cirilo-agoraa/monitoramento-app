@@ -58,8 +58,6 @@
 .spinner-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(30, 30, 30, 0.35);
-  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
