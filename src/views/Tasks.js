@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import './../App.css';
 import Sidebar from './../components/sidebar';
 import Spinner from './../components/spinner';
-// import exempleData from './exemple.json'; // ajuste o caminho se necessário
 import TableCard from './../components/tablecard';
-import { useCallback } from 'react';
+import './../index.css';
 
 function App() {
   const [data, setData] = useState(null);
@@ -12,7 +11,6 @@ function App() {
   const [selectedGroupId, setSelectedGroupId] = useState('');
   const [selectedUserName, setSelectedUserName] = useState('');
   const [currentStatus, setCurrentStatus] = useState(null);
-
 
   const buildQueryString = useCallback(() => {
     const params = [];
@@ -39,15 +37,24 @@ function App() {
       .catch(() => setData({ error: 'Erro ao buscar dados' }))
       .finally(() => setLoading(false));
   }, [selectedGroupId, selectedUserName, buildQueryString]);
- 
+
   const groups = data?.groups || [];
-  const users = data?.users || [];
+  const usersOptions = [
+    { key: "Automação 00", value: "Automação 00" },
+    { key: "Automação 01", value: "Automação 01" },
+    { key: "Automação 02", value: "Automação 02" },
+    { key: "Automação 03", value: "Automação 03" },
+    { key: "Automação 04", value: "Automação 04" },
+    { key: "Automação 05", value: "Automação 05" },
+  ];
   const allStatusesCounts = data?.allStatusesCounts || {};
-  
+
   function handleFilterChange({ groupId, userName, status }) {
-    setSelectedGroupId(groupId ?? selectedGroupId);
-    setSelectedUserName(userName ?? selectedUserName);
-    setCurrentStatus(status ?? currentStatus);
+    if (typeof status !== "undefined") {
+      setCurrentStatus(status === currentStatus ? null : status);
+    }
+    if (typeof groupId !== "undefined") setSelectedGroupId(groupId);
+    if (typeof userName !== "undefined") setSelectedUserName(userName);
   }
 
   if (loading) return <Spinner />;
@@ -60,66 +67,51 @@ function App() {
           <div className="h-container">
             <h1>Monitoramento processos</h1>
             <div className="d-flex-center">
-              <div className="panel pr-4">
+              <div className="panel">
                 <div className="status-panel">
                   <div>
                     <div className="w-100 d-flex-center">Normal</div>
                     <div className="w-100 d-flex-center">
-                      {Number(currentStatus) === 1 ? (
-                        <div
-                          className="green-ballon-selected pointer"
-                          onClick={() => handleFilterChange({ status: null })}
-                        >
-                          {String(allStatusesCounts[1] ?? '0')}
-                        </div>
-                      ) : (
-                        <div
-                          className="green-ballon pointer"
-                          onClick={() => handleFilterChange({ status: 1 })}
-                        >
-                          {String(allStatusesCounts[1] ?? '0')}
-                        </div>
-                      )}
+                      <div
+                        className={
+                          Number(currentStatus) === 1
+                            ? "green-ballon-selected pointer"
+                            : "green-ballon-outline pointer"
+                        }
+                        onClick={() => handleFilterChange({ status: 1 })}
+                      >
+                        {String(allStatusesCounts[1] ?? '0')}
+                      </div>
                     </div>
                   </div>
                   <div>
                     <div className="w-100 d-flex-center">Atenção</div>
                     <div className="w-100 d-flex-center">
-                      {Number(currentStatus) === 2 ? (
-                        <div
-                          className="yellow-ballon-selected pointer"
-                          onClick={() => handleFilterChange({ status: null })}
-                        >
-                          {String(allStatusesCounts[2] ?? '0')}
-                        </div>
-                      ) : (
-                        <div
-                          className="yellow-ballon pointer"
-                          onClick={() => handleFilterChange({ status: 2 })}
-                        >
-                          {String(allStatusesCounts[2] ?? '0')}
-                        </div>
-                      )}
+                      <div
+                        className={
+                          Number(currentStatus) === 2
+                            ? "yellow-ballon-selected pointer"
+                            : "yellow-ballon-outline pointer"
+                        }
+                        onClick={() => handleFilterChange({ status: 2 })}
+                      >
+                        {String(allStatusesCounts[2] ?? '0')}
+                      </div>
                     </div>
                   </div>
                   <div>
                     <div className="w-100 d-flex-center">Revisar</div>
                     <div className="w-100 d-flex-center">
-                      {Number(currentStatus) === 3 ? (
-                        <div
-                          className="red-ballon-selected pointer"
-                          onClick={() => handleFilterChange({ status: null })}
-                        >
-                          {String(allStatusesCounts[3] ?? '0')}
-                        </div>
-                      ) : (
-                        <div
-                          className="red-ballon pointer"
-                          onClick={() => handleFilterChange({ status: 3 })}
-                        >
-                          {String(allStatusesCounts[3] ?? '0')}
-                        </div>
-                      )}
+                      <div
+                        className={
+                          Number(currentStatus) === 3
+                            ? "red-ballon-selected pointer"
+                            : "red-ballon-outline pointer"
+                        }
+                        onClick={() => handleFilterChange({ status: 3 })}
+                      >
+                        {String(allStatusesCounts[3] ?? '0')}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -161,8 +153,8 @@ function App() {
                   onChange={e => handleFilterChange({ userName: e.target.value })}
                 >
                   <option value="">Escolha um usuario</option>
-                  {users.map(user => (
-                    <option key={user.id} value={user.id}>
+                  {usersOptions.map(user => (
+                    <option key={user.key} value={user.key}>
                       {user.value}
                     </option>
                   ))}

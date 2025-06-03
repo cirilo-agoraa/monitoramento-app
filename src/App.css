@@ -154,10 +154,6 @@ body {
   cursor: pointer;
 }
 
-.panel {
-  /* Espaço para customização futura */
-}
-
 .panel-box {
   display: flex;
   justify-content: center;
@@ -247,7 +243,7 @@ body {
   font-size: 10px;
 }
 .process-name {
-  font-size: 18px;
+  font-size: 14px;
   color: #313E50;
   font-weight: 700;
 }
@@ -266,45 +262,88 @@ body {
   font-weight: bolder;
 }
 
-.red-ballon, .red-ballon-selected,
-.green-ballon, .green-ballon-selected,
-.yellow-ballon, .yellow-ballon-selected {
+.green-ballon-outline {
+  border: 2px solid #38c172;
+  background: transparent;
+  color: #38c172;
   width: 75px;
   height: 30px;
   display: grid;
   place-items: center;
   margin-right: 5px;
   border-radius: 15px;
-  font-weight: 600;
-  font-size: 1rem;
-}
-
-.red-ballon {
-  border: 1px solid red;
-  color: red;
-  background: transparent;
-}
-.red-ballon-selected {
-  background-color: red;
-  color: white;
-}
-.green-ballon {
-  border: 1px solid green;
-  color: green;
-  background: transparent;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background 0.2s;
 }
 .green-ballon-selected {
-  background-color: green;
-  color: white;
+  background: #38c172;
+  color: #fff;
+  border: 2px solid #38c172;
+  width: 75px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
-.yellow-ballon {
-  border: 1px solid yellow;
-  color: #bfa800;
+
+.yellow-ballon-outline {
+  border: 2px solid #ffe066;
   background: transparent;
+  color: #bfa800;
+  width: 75px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background 0.2s;
 }
 .yellow-ballon-selected {
-  background-color: yellow;
-  color: #232946;
+  background: #ffe066;
+  color: #222;
+  border: 2px solid #ffe066;
+  width: 75px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.red-ballon-outline {
+  border: 2px solid #e3342f;
+  background: transparent;
+  color: #e3342f;
+  width: 75px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+.red-ballon-selected {
+  background: #e3342f;
+  color: #fff;
+  border: 2px solid #e3342f;
+  width: 75px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-right: 5px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .process-panel {
@@ -481,7 +520,6 @@ tfoot {
   align-items: flex-start;
   font-family: 'Inter', sans-serif;
   background: #f3f4f6;
-  margin-left: 220px; /* espaço para sidebar fixa */
 }
 
 .process-panel {
@@ -507,7 +545,7 @@ tfoot {
   border: 2px solid #222;
   border-radius: 12px;
   background: #fafafa;
-  padding: 14px 0 10px 0;
+  padding: 1rem;
   width: 100%;
   max-width: 480px;
   margin-left: auto;
