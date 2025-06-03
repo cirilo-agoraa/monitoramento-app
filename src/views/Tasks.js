@@ -11,14 +11,17 @@ function App() {
   const [selectedGroupId, setSelectedGroupId] = useState('');
   const [selectedUserName, setSelectedUserName] = useState('');
   const [currentStatus, setCurrentStatus] = useState(null);
+  const [isActive, setIsActive] = useState("true");
 
   const buildQueryString = useCallback(() => {
     const params = [];
     if (selectedGroupId) params.push(`groupId=${encodeURIComponent(selectedGroupId)}`);
-    if (selectedUserName) params.push(`userName=${encodeURIComponent(selectedUserName)}`);
+    if (isActive) params.push(`isActive=${isActive}`);
     if (currentStatus) params.push(`status=${encodeURIComponent(currentStatus)}`);
+    if (selectedUserName) params.push(`userName=${encodeURIComponent(selectedUserName)}`);
     return params.length ? `?${params.join('&')}` : '';
-  }, [selectedGroupId, selectedUserName, currentStatus]);
+
+  }, [selectedGroupId, selectedUserName, currentStatus, isActive]);
 
   useEffect(() => {
     setLoading(true);
@@ -159,6 +162,19 @@ function App() {
                     </option>
                   ))}
                 </select>
+              </div>
+              <div className="d-grid m-1">
+                <label htmlFor="isactive-select">Ativos</label>
+                <select
+                    id="isactive-select"
+                    name="isActive"
+                    className="form-control"
+                    value={isActive}
+                    onChange={e => setIsActive(e.target.value)}
+                  >
+                    <option value="true">Sim</option>
+                    <option value="false">Não</option>
+                  </select>
               </div>
             </form>
           </div>
