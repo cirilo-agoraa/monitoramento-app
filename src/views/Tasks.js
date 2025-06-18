@@ -24,22 +24,31 @@ function App() {
   }, [selectedGroupId, selectedUserName, currentStatus, isActive]);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`http://localhost:9998/api${buildQueryString()}`)
-      .then((res) => res.json())
-      .then((json) => {
-        // Ordena os arrays por status descrescente
-        setData({
-          ...json,
-          exportedBases: [...(json.exportedBases || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
-          initialRoutines: [...(json.initialRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
-          weekRoutines: [...(json.weekRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
-          dailyRoutines: [...(json.dailyRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
-        });
-      })
-      .catch(() => setData({ error: 'Erro ao buscar dados' }))
-      .finally(() => setLoading(false));
-  }, [selectedGroupId, selectedUserName, buildQueryString]);
+    const fetchData = () => {
+      setLoading(true);
+      fetch(`http://localhost:9998/api${buildQueryString()}`)
+        .then((res) => res.json())
+        .then((json) => {
+          setData({
+            ...json,
+            exportedBases: [...(json.exportedBases || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
+            initialRoutines: [...(json.initialRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
+            weekRoutines: [...(json.weekRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
+            dailyRoutines: [...(json.dailyRoutines || [])].sort((a, b) => (b.status ?? 0) - (a.status ?? 0)),
+          });
+        })
+        .catch(() => setData({ error: 'Erro ao buscar dados' }))
+        .finally(() => setLoading(false));
+    };
+  
+    fetchData(); // chamada inicial imediata
+  
+    const interval = setInterval(() => {
+      fetchData(); // chamada a cada 5 minutos
+    }, 300000); // 5 minutos = 300.000 ms
+  
+    return () => clearInterval(interval); // limpa o intervalo se o componente for desmontado
+  }, [buildQueryString]);
 
   const groups = data?.groups || [];
   const usersOptions = [
