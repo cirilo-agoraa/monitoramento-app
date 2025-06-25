@@ -170,7 +170,7 @@ function Pannel() {
             <div className="panel-col">
               <div className="process-title">Chatsac</div>
               <div className="panel-box">
-                <div className="fs-16">Chatsac:</div>
+                <div className="fs-16">Bot:</div>
                 <div className="d-flex-center">
                   {isChatsacChannelOnline ? (
                     <div className="green-circle"></div>
